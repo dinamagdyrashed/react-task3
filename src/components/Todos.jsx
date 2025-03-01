@@ -1,17 +1,14 @@
-import React from 'react'
-import Todo from './Todo'
+import React from "react";
+import Todo from "./Todo";
 
-const Todos = (props) => {
-    const { todos } = props;
-    console.log(todos);
-
+const Todos = ({ todos, onTodoDelete }) => {
     return (
         <div>
-            {todos.map((todo, index) => {
-                return <Todo key={index} todo={todo} />;
-            })}
+            {todos.map((todo) => (
+                <Todo key={todo.id} todo={todo} onTodoDelete={onTodoDelete} />
+            ))}
         </div>
     );
-}
+};
 
-export default Todos
+export default Todos;

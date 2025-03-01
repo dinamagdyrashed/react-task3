@@ -1,35 +1,18 @@
-
-import TodoForm from './components/TodoForm'
-import 'bootstrap/dist/css/bootstrap.min.css';
-import Todos from './components/Todos';
-import { useState } from 'react';
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import "bootstrap/dist/css/bootstrap.min.css";
+import TodoDetails from "./components/TodoDetails";
+import Home from "./pages/Home";
 
 function App() {
-  const [todos, setTodos] = useState([]);
-
-  const addTodo = (todo) => {
-    setTodos([...todos, todo]);
-    // todos.push(todo);
-  };
-  // const deleteTodo = (id) => {
-  //   todos = todos.filter((todo) => todo.id !== id);
-  // };
   return (
-    <>
-      <div className='d-flex justify-content-center align-items-center flex-column'>
-        <div className='p-5 mt-5 border w-75'>
-          <h3 className='text-center fw-bold text-success'>TODO APP</h3>
-          <TodoForm addTodo={addTodo} />
-          {todos.length > 0 ? (
-            <>
-              <Todos todos={todos} />
-            </>
-          ) : null}
-
-        </div>
-      </div>
-    </>
-  )
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="home" element={<Home />} />
+        <Route path="todo-details/:id" element={<TodoDetails />} />
+      </Routes>
+    </BrowserRouter>
+  );
 }
 
-export default App
+export default App;
